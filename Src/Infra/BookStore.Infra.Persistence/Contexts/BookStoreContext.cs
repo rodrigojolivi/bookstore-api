@@ -1,6 +1,5 @@
 ﻿using System.Reflection;
 using BookStore.Core.Domain.Entities;
-using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 
 namespace BookStore.Infra.Persistence.Contexts
@@ -26,16 +25,7 @@ namespace BookStore.Infra.Persistence.Contexts
 
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
-            try
-            {
-                return await base.SaveChangesAsync(cancellationToken);
-            }
-            catch (SqlException ex)
-            {
-                // Salvar log
-
-                throw;
-            }
+            return await base.SaveChangesAsync(cancellationToken);
         }
     }
 }
